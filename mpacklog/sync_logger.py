@@ -35,7 +35,7 @@ class SyncLogger:
         if os.path.exists(self.path):
             raise FileExistsError(f"File {path} already exists!")
 
-    def put(self, message: dict, write: bool=False):
+    def put(self, message: dict, write: bool = False):
         """Puts a message in the queue.
 
         Args:
