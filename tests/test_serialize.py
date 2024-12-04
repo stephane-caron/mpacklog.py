@@ -27,6 +27,8 @@ class TestSerialize(unittest.TestCase):
     def test_serialize(self):
         foo = FooSerializer()
         x = np.array([1, 2, 3])
+        some_int = 42
         self.assertEqual(serialize(x), list(x))
         self.assertEqual(serialize(MockPinocchioSE3(x)), list(x))
         self.assertEqual(serialize(foo), {"foo": "bar"})
+        self.assertEqual(serialize(some_int), some_int)  # returned as-is
