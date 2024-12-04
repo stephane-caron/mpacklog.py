@@ -71,10 +71,10 @@
 
 First release of the project.
 
-[unreleased]: https://github.com/upkie/mpacklog.py/compare/v4.0.0...HEAD
-[4.0.0]: https://github.com/upkie/mpacklog.py/compare/v3.1.0...v4.0.0
-[3.1.0]: https://github.com/upkie/mpacklog.py/compare/v3.0.0...v3.1.0
-[3.0.0]: https://github.com/upkie/mpacklog.py/compare/v2.1.0...v3.0.0
-[2.1.0]: https://github.com/upkie/mpacklog.py/compare/v2.0.1...v2.1.0
-[2.0.0]: https://github.com/upkie/mpacklog.py/compare/v1.0.0...v2.0.0
-[1.0.0]: https://github.com/upkie/mpacklog.py/releases/tag/v1.0.0
+[unreleased]: https://github.com/stephane-caron/mpacklog.py/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/stephane-caron/mpacklog.py/compare/v3.1.0...v4.0.0
+[3.1.0]: https://github.com/stephane-caron/mpacklog.py/compare/v3.0.0...v3.1.0
+[3.0.0]: https://github.com/stephane-caron/mpacklog.py/compare/v2.1.0...v3.0.0
+[2.1.0]: https://github.com/stephane-caron/mpacklog.py/compare/v2.0.1...v2.1.0
+[2.0.0]: https://github.com/stephane-caron/mpacklog.py/compare/v1.0.0...v2.0.0
+[1.0.0]: https://github.com/stephane-caron/mpacklog.py/releases/tag/v1.0.0

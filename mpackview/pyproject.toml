@@ -38,9 +38,9 @@ keywords = ["messagepack", "serialization", "logging", "telemetry"]
 mpackview = "mpackview:main"
 
 [project.urls]
-Source = "https://github.com/upkie/mpacklog.py"
-Tracker = "https://github.com/upkie/mpacklog.py/issues"
-Changelog = "https://github.com/upkie/mpacklog.py/blob/master/CHANGELOG.md"
+Source = "https://github.com/stephane-caron/mpacklog.py"
+Tracker = "https://github.com/stephane-caron/mpacklog.py/issues"
+Changelog = "https://github.com/stephane-caron/mpacklog.py/blob/master/CHANGELOG.md"
 
 [tool.black]
 line-length = 79

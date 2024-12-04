@@ -36,10 +36,10 @@ keywords = ["messagepack", "serialization", "logging"]
 mpacklog = "mpacklog.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/upkie/mpacklog.py"
-Source = "https://github.com/upkie/mpacklog.py"
-Tracker = "https://github.com/upkie/mpacklog.py/issues"
-Changelog = "https://github.com/upkie/mpacklog.py/blob/master/CHANGELOG.md"
+Homepage = "https://github.com/stephane-caron/mpacklog.py"
+Source = "https://github.com/stephane-caron/mpacklog.py"
+Tracker = "https://github.com/stephane-caron/mpacklog.py/issues"
+Changelog = "https://github.com/stephane-caron/mpacklog.py/blob/master/CHANGELOG.md"
 
 [tool.black]
 line-length = 79
