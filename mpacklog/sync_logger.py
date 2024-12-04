@@ -21,6 +21,9 @@ class SyncLogger:
     are synchronous.
     """
 
+    path: str
+    queue: queue.Queue
+
     def __init__(self, path: str):
         """Initialize logger.
 
