@@ -21,7 +21,7 @@ class SyncLogger:
     are synchronous.
     """
 
-    def __init__(self, path):
+    def __init__(self, path: str):
         """Initialize logger.
 
         Args:
@@ -35,12 +35,12 @@ class SyncLogger:
         if os.path.exists(self.path):
             raise FileExistsError(f"File {path} already exists!")
 
-    def put(self, message, write=False):
+    def put(self, message: dict, write: bool=False):
         """Puts a message in the queue.
 
         Args:
-            message (dict): message to log
-            write (bool): whether to append the message to the file immediately
+            message: message to log
+            write: whether to append the message to the file immediately
 
         """
         self.queue.put(message)

@@ -26,8 +26,6 @@ jobs:
                   python -m pip install coveralls tox
 
             - name: "Check code coverage"
-              env:
-                  MOSEKLM_LICENSE_FILE: ${{ secrets.MSK_LICENSE }}
               run: |
                   tox -e coverage
 
