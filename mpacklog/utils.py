@@ -11,20 +11,20 @@ import logging
 import os
 
 
-def find_log_file(log_path: str) -> str:
-    """Find log file to open.
+def find_log_file(path: str) -> str:
+    """Find the most recent log file to open in a path.
 
     Args:
-        log_path: Path to a directory or a specific log file.
+        path: Path to a directory or a specific log file.
     """
-    if os.path.exists(log_path):
-        if os.path.isfile(log_path):
-            return log_path
-    mpack_files = glob.glob(os.path.join(log_path, "*.mpack"))
+    if os.path.exists(path):
+        if os.path.isfile(path):
+            return path
+    mpack_files = glob.glob(os.path.join(path, "*.mpack"))
     log_file = max(mpack_files, key=os.path.getmtime)
     logging.info(
         "Opening the most recent log in %s: %s",
-        log_path,
+        path,
         os.path.basename(log_file),
     )
     return log_file
