@@ -41,9 +41,6 @@ Source = "https://github.com/stephane-caron/mpacklog.py"
 Tracker = "https://github.com/stephane-caron/mpacklog.py/issues"
 Changelog = "https://github.com/stephane-caron/mpacklog.py/blob/master/CHANGELOG.md"
 
-[tool.black]
-line-length = 79
-
 [tool.ruff]
 line-length = 79
 
