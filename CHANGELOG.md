@@ -10,6 +10,7 @@
 
 ### Changed
 
+- Bump development status to stable
 - docs: Structure of the documentation
 
 ### Fixed
