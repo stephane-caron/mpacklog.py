@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- docs: Section on reading logs
+
 ### Changed
 
 - docs: Structure of the documentation

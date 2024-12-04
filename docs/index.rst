@@ -9,6 +9,7 @@ mpacklog documentation
 
     async_logger.rst
     log_server.rst
+    read_log.rst
     serialize.rst
     sync_logger.rst
     utils.rst
