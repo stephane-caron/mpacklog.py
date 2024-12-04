@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [4.0.1] - 2024-12-04
+
 ### Added
 
 - docs: Section on reading logs
@@ -17,6 +19,7 @@
 ### Fixed
 
 - docs: Readme links to the documentation
+- Correct OSI classifier of project license
 
 ## [4.0.0] - 2024-06-07
 
@@ -87,7 +90,8 @@
 
 First release of the project.
 
-[unreleased]: https://github.com/stephane-caron/mpacklog.py/compare/v4.0.0...HEAD
+[unreleased]: https://github.com/stephane-caron/mpacklog.py/compare/v4.0.1...HEAD
+[4.0.1]: https://github.com/stephane-caron/mpacklog.py/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/stephane-caron/mpacklog.py/compare/v3.1.0...v4.0.0
 [3.1.0]: https://github.com/stephane-caron/mpacklog.py/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/stephane-caron/mpacklog.py/compare/v2.1.0...v3.0.0
