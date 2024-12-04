@@ -5,6 +5,7 @@
 ### Added
 
 - docs: Section on reading logs
+- Unit test for `find_log_file`
 - Unit test for `read_log`
 
 ### Changed
