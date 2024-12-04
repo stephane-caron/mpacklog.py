@@ -7,7 +7,7 @@
 """Test utility functions."""
 
 import tempfile
-import os
+import time
 import unittest
 
 from mpacklog import SyncLogger
@@ -16,14 +16,12 @@ from mpacklog.utils import find_log_file
 
 class TestUtils(unittest.TestCase):
     def test_find_log_file(self):
-        tmp_files = []
         for _ in range(3):
             tmp_file = tempfile.mktemp(suffix=".mpack")
             logger = SyncLogger(tmp_file)
             logger.put({"foo": 12, "something": "else"})
             logger.put({"foo": 42, "bar": "foo"})
             logger.write()
-            tmp_files.append(tmp_file)
+            time.sleep(1)
         log_file = find_log_file(tempfile.gettempdir())
-        latest_tmp_file = max(tmp_files, key=os.path.getmtime)
-        self.assertEqual(log_file, latest_tmp_file)
+        self.assertEqual(log_file, tmp_file)
