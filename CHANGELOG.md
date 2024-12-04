@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Changed
+
+- docs: Structure of the documentation
+
+### Fixed
+
+- docs: Readme links to the documentation
+
 ## [4.0.0] - 2024-06-07
 
 ### Added

@@ -7,4 +7,8 @@ mpacklog documentation
 .. toctree::
     :maxdepth: 1
 
-    api.rst
+    async_logger.rst
+    log_server.rst
+    serialize.rst
+    sync_logger.rst
+    utils.rst
