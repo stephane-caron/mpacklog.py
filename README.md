@@ -99,5 +99,5 @@ You can use [`mpackview`](https://pypi.org/project/mpackview) to connect a live 
 * [foxplot](https://github.com/stephane-caron/foxplot): explore and plot time-series data from MessagePack and line-delimited JSON files.
 * [jq](https://github.com/stedolan/jq): manipulate JSON series to add, remove or extend fields.
 * [moteus-gui](https://pypi.org/project/moteus-gui/): motor driver telemetry GUI from which ``mpackview`` was derived
-* [mpacklog.cpp](https://github.com/upkie/mpacklog.cpp): log dictionaries to MessagePack files in C++.
+* [mpacklog.cpp](https://github.com/stephane-caron/mpacklog.cpp): log dictionaries to MessagePack files in C++.
 * [rq](https://github.com/dflemstr/rq): transform from/to MessagePack, JSON, YAML, TOML, etc. For instance ``mpacklog dump`` is equivalent to ``rq -mJ < my_log.mpack``.
