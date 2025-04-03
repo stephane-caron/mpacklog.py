@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- CICD: Update checkout action to v4
+
 ## [4.0.1] - 2024-12-04
 
 ### Added
