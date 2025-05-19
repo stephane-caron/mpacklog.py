@@ -74,6 +74,8 @@ The ``dump`` command writes down a log file to [newline-delimited JSON](https://
 mpacklog dump my_log.mpack
 ```
 
+This command is similar to `rq -mJ < my_log.mpack` if you are familiar with [rq](https://github.com/dflemstr/rq).
+
 ### ``list``
 
 This commands lists all nested dictionary keys encountered in a log file. Nested keys are separated by slashes ``/`` in the output. For instance, if some dictionaries in ``my_log.mpack`` contain values at ``dict["foo"]["bar"]`` and ``dict["foo"]["cbs"]``, the command will produce:
