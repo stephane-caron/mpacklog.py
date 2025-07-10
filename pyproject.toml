@@ -58,6 +58,16 @@ mpacklog = { path = ".", editable = true }
 python = ">=3.8,<3.13"
 numpy = ">=1.15.4"
 
+[tool.pixi.feature.docs.dependencies]
+furo = ">=2023.8.17"
+sphinx = ">=7.2.2"
+sphinx-autodoc-typehints = "*"
+sphinx-favicon = "*"
+
+[tool.pixi.feature.docs.tasks]
+docs-build = "sphinx-build docs _build -W"
+docs-open = { cmd = "xdg-open _build/index.html", depends-on = ["docs-build"] }
+
 [tool.pixi.feature.lint.dependencies]
 mypy = ">=0.812"
 pylint = ">=2.8.2"
@@ -83,8 +93,9 @@ test = "python -m unittest discover"
 
 [tool.pixi.environments]
 default = { features = [], solve-group = "default" }
-test = { features = ["test"], solve-group = "default" }
+docs = { features = ["docs"], solve-group = "default" }
 lint = { features = ["lint"], solve-group = "default" }
+test = { features = ["test"], solve-group = "default" }
 
 [tool.pylint.messages_control]
 disable = [
