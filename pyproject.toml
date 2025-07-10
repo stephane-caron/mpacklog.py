@@ -58,6 +58,14 @@ mpacklog = { path = ".", editable = true }
 python = ">=3.8,<3.13"
 numpy = ">=1.15.4"
 
+[tool.pixi.feature.coverage.dependencies]
+coverage = ">=5.5"
+
+[tool.pixi.feature.coverage.tasks]
+coverage-erase = "coverage erase"
+coverage-run = { cmd = "coverage run -m unittest discover", depends-on = ["coverage-erase"] }
+coverage = { cmd = "coverage report --rcfile=pyproject.toml", depends-on = ["coverage-run"] }
+
 [tool.pixi.feature.docs.dependencies]
 furo = ">=2023.8.17"
 sphinx = ">=7.2.2"
@@ -83,19 +91,34 @@ lint-ruff-check = "ruff check mpacklog"
 lint-ruff-format = "ruff format --check mpacklog"
 lint = { depends-on = ["lint-mypy", "lint-pylint", "lint-ruff-check", "lint-ruff-format"] }
 
-[tool.pixi.feature.test.dependencies]
-coverage = ">=5.5"
+[tool.pixi.feature.py38.dependencies]
+python = "3.8.*"
+
+[tool.pixi.feature.py39.dependencies]
+python = "3.9.*"
+
+[tool.pixi.feature.py310.dependencies]
+python = "3.10.*"
+
+[tool.pixi.feature.py311.dependencies]
+python = "3.11.*"
+
+[tool.pixi.feature.py312.dependencies]
+python = "3.12.*"
 
 [tool.pixi.feature.test.tasks]
-coverage-erase = "coverage erase"
-coverage = { cmd = "coverage run -m unittest discover && coverage report --rcfile=pyproject.toml", depends-on = ["coverage-erase"] }
 test = "python -m unittest discover"
 
 [tool.pixi.environments]
 default = { features = [], solve-group = "default" }
-docs = { features = ["docs"], solve-group = "default" }
-lint = { features = ["lint"], solve-group = "default" }
-test = { features = ["test"], solve-group = "default" }
+coverage = { features = ["py312", "coverage"], solve-group = "py312" }
+docs = { features = ["py312", "docs"], solve-group = "py312" }
+lint = { features = ["py312", "lint"], solve-group = "py312" }
+test-py38 = { features = ["py38", "test"], solve-group = "py38" }
+test-py39 = { features = ["py39", "test"], solve-group = "py39" }
+test-py310 = { features = ["py310", "test"], solve-group = "py310" }
+test-py311 = { features = ["py311", "test"], solve-group = "py311" }
+test-py312 = { features = ["py312", "test"], solve-group = "py312" }
 
 [tool.pylint.messages_control]
 disable = [
