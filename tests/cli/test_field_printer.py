@@ -81,7 +81,8 @@ class TestFieldPrinter(unittest.TestCase):
         """Test that observation is updated with new data."""
         printer = FieldPrinter()
         data = {"key": "value"}
-        printer.process(data)
+        with patch("sys.stdout", new_callable=StringIO):
+            printer.process(data)
         self.assertEqual(printer.observation["key"], "value")
 
 

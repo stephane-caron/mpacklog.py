@@ -27,7 +27,13 @@ class TestGetArgumentParser(unittest.TestCase):
 
         # Test help doesn't crash
         with patch("sys.exit"):
-            with patch("sys.stderr", new_callable=StringIO):
+            with patch(
+                "sys.stderr",
+                new_callable=StringIO,
+            ), patch(
+                "sys.stdout",
+                new_callable=StringIO,
+            ):
                 parser.parse_args(["--help"])
 
     def test_dump_subcommand(self):
@@ -135,22 +141,49 @@ class TestMainFunction(unittest.TestCase):
 
     def test_main_no_args(self):
         """Test main function with no arguments."""
-        with patch("sys.stdout", new_callable=StringIO):
+        with patch(
+            "sys.stdout",
+            new_callable=StringIO,
+        ) as mock_stdout, patch(
+            "sys.stderr",
+            new_callable=StringIO,
+        ):
             main([])
+        # Should print help when no subcommand provided
+        output = mock_stdout.getvalue()
+        self.assertIn("usage:", output)
 
     def test_main_list_command(self):
         """Test main function with list command."""
-        with patch("sys.stdout", new_callable=StringIO):
+        with patch(
+            "sys.stdout",
+            new_callable=StringIO,
+        ), patch(
+            "sys.stderr",
+            new_callable=StringIO,
+        ):
             main(["list", self.temp_file.name])
 
     def test_main_dump_json(self):
         """Test main function with dump JSON command."""
-        with patch("sys.stdout", new_callable=StringIO):
+        with patch(
+            "sys.stdout",
+            new_callable=StringIO,
+        ), patch(
+            "sys.stderr",
+            new_callable=StringIO,
+        ):
             main(["dump", self.temp_file.name, "--format", "json"])
 
     def test_main_dump_csv(self):
         """Test main function with dump CSV command."""
-        with patch("sys.stdout", new_callable=StringIO):
+        with patch(
+            "sys.stdout",
+            new_callable=StringIO,
+        ), patch(
+            "sys.stderr",
+            new_callable=StringIO,
+        ):
             main(
                 [
                     "dump",
