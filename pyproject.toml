@@ -42,6 +42,55 @@ Source = "https://github.com/stephane-caron/mpacklog.py"
 Tracker = "https://github.com/stephane-caron/mpacklog.py/issues"
 Changelog = "https://github.com/stephane-caron/mpacklog.py/blob/master/CHANGELOG.md"
 
+[tool.mypy]
+disable_error_code = ["attr-defined", "name-defined"]
+ignore_missing_imports = true
+warn_no_return = true
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "win-64"]
+
+[tool.pixi.pypi-dependencies]
+mpacklog = { path = ".", editable = true }
+
+[tool.pixi.dependencies]
+python = ">=3.8,<3.13"
+numpy = ">=1.15.4"
+
+[tool.pixi.feature.lint.dependencies]
+mypy = ">=0.812"
+pylint = ">=2.8.2"
+ruff = ">=0.4.3"
+
+[tool.pixi.feature.lint.pypi-dependencies]
+types-aiofiles = ">=23.2.0.0"
+
+[tool.pixi.feature.lint.tasks]
+lint-mypy = "mypy mpacklog"
+lint-pylint = "pylint mpacklog --exit-zero"
+lint-ruff-check = "ruff check mpacklog"
+lint-ruff-format = "ruff format --check mpacklog"
+lint = { depends-on = ["lint-mypy", "lint-pylint", "lint-ruff-check", "lint-ruff-format"] }
+
+[tool.pixi.feature.test.dependencies]
+coverage = ">=5.5"
+
+[tool.pixi.feature.test.tasks]
+coverage-erase = "coverage erase"
+coverage = { cmd = "coverage run -m unittest discover && coverage report --rcfile=pyproject.toml", depends-on = ["coverage-erase"] }
+test = "python -m unittest discover"
+
+[tool.pixi.environments]
+default = { features = [], solve-group = "default" }
+test = { features = ["test"], solve-group = "default" }
+lint = { features = ["lint"], solve-group = "default" }
+
+[tool.pylint.messages_control]
+disable = [
+    "R0903", # too-few-public-methods
+]
+
 [tool.ruff]
 line-length = 79
 
