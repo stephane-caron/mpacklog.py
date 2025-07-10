@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- CICD: Add unit tests for the command-line interface
 - CICD: Switch from tox to pixi for dev environment management
 - CICD: Update checkout action to v4
 
