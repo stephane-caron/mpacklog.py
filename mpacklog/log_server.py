@@ -38,6 +38,7 @@ class LogServer:
             log_path: Path to a log file, or a directory containing log files.
             port: Port number to listen to.
         """
+        self.__frequency = frequency
         self.__keep_going = True
         self.__stopped = 0
         self.last_log = {}
@@ -67,7 +68,11 @@ class LogServer:
     async def unpack(self):
         """Unpack latest data from log file."""
         log_file = find_log_file(self.log_path)
-        rate = AsyncRateLimiter(frequency=2000.0, name="unpack", warn=False)
+        rate = AsyncRateLimiter(
+            frequency=self.__frequency,
+            name="unpack",
+            warn=False,
+        )
         async with aiofiles.open(log_file, "rb") as file:
             await file.seek(0, 2)  # 0 is the offset, 2 means seek from the end
             unpacker = msgpack.Unpacker(raw=False)
@@ -97,7 +102,11 @@ class LogServer:
         request: str = "start"
         packer = msgpack.Packer(default=serialize, use_bin_type=True)
         logging.info("New connection from %s", address)
-        rate = AsyncRateLimiter(frequency=2000.0, name="serve", warn=False)
+        rate = AsyncRateLimiter(
+            frequency=self.__frequency,
+            name="serve",
+            warn=False,
+        )
         try:
             while self.__keep_going:
                 data = await loop.sock_recv(client, 4096)

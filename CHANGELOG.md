@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Configurable frequency parameter to adjust log-server rate limiting
+
 ### Changed
 
 - CICD: Add unit tests for the command-line interface
