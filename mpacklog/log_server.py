@@ -31,15 +31,26 @@ class LogServer:
     log_path: str
     port: int
 
-    def __init__(self, log_path: str, port: int):
+    def __init__(
+        self,
+        log_path: str,
+        port: int,
+        frequency: float = 2000.0,
+        read_from_beginning: bool = False,
+    ):
         """Prepare a new server.
 
         Args:
             log_path: Path to a log file, or a directory containing log files.
             port: Port number to listen to.
+            frequency: Rate limiting frequency in Hz for the two internal
+                (unpack and serve) loops.
+            read_from_beginning: If True, read the whole log file from its
+                beginning. Otherwise (default), start reading from end of file.
         """
         self.__frequency = frequency
         self.__keep_going = True
+        self.__read_from_beginning = read_from_beginning
         self.__stopped = 0
         self.last_log = {}
         self.log_path = log_path
@@ -74,7 +85,7 @@ class LogServer:
             warn=False,
         )
         async with aiofiles.open(log_file, "rb") as file:
-            await file.seek(0, 2)  # 0 is the offset, 2 means seek from the end
+            await file.seek(0, 0 if self.__read_from_beginning else 2)
             unpacker = msgpack.Unpacker(raw=False)
             while self.__keep_going:
                 data = await file.read(4096)
