@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Example showing how to interact with a log server
 - LogServer: Add `frequency` parameter to adjust rate limiting
 - LogServer: Add `read_from_beginning` parameter to select initial behavior
 
