@@ -2230,7 +2230,7 @@ packages:
 - pypi: ./
   name: mpacklog
   version: 4.0.1
-  sha256: e8ceb08fefed21522d8c7fe2c961685c5cd984d4672ec42bb956de2d678d9600
+  sha256: 004e839da991484c381b0841a6dcbd40d71e56e4207850eb1e25295e62357064
   requires_dist:
   - aiofiles>=0.7.0
   - loop-rate-limiters>=1.0.0

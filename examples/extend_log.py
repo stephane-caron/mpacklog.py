@@ -11,7 +11,7 @@ from mpacklog import SyncLogger, read_log
 
 CURDIR = os.path.dirname(os.path.abspath(__file__))
 INPUT_PATH = f"{CURDIR}/data/upkie.mpack"
-OUTPUT_PATH = f"{CURDIR}/upkie_ext.mpack"
+OUTPUT_PATH = f"{CURDIR}/data/upkie_extended.mpack"
 
 
 def process_input(unpacked: dict) -> dict:

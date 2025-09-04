@@ -6,6 +6,7 @@
 """Tests for the main command-line interface."""
 
 import argparse
+import sys
 import tempfile
 import unittest
 from io import StringIO
@@ -195,17 +196,22 @@ class TestMainFunction(unittest.TestCase):
                 ]
             )
 
-    @patch("mpacklog.cli.main.LogServer")
-    @patch("logging.getLogger")
-    def test_main_serve_command(self, mock_logger, mock_server):
+    def test_main_serve_command(self):
         """Test main function with serve command."""
-        mock_server_instance = MagicMock()
-        mock_server.return_value = mock_server_instance
+        cli_main_module = sys.modules["mpacklog.cli.main"]
+        with patch.object(
+            cli_main_module,
+            "LogServer",
+        ) as mock_server, patch(
+            "logging.getLogger",
+        ):
+            mock_server_instance = MagicMock()
+            mock_server.return_value = mock_server_instance
 
-        main(["serve", "/path/to/logs", "--port", "8080"])
+            main(["serve", "/path/to/logs", "--port", "8080"])
 
-        mock_server.assert_called_once_with("/path/to/logs", 8080)
-        mock_server_instance.run.assert_called_once()
+            mock_server.assert_called_once_with("/path/to/logs", 8080)
+            mock_server_instance.run.assert_called_once()
 
 
 if __name__ == "__main__":
