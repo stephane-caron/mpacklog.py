@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2025 Inria
 
-"""Read dictionaries from delta-compressed log files."""
+"""Read dictionaries from delta-encoded log files."""
 
 from typing import Generator
 
@@ -15,10 +15,10 @@ def delta_decode(
     path: str,
     chunk_size: int = 100_000,
 ) -> Generator[dict, None, None]:
-    """Read dictionaries from a delta-compressed log file.
+    """Read dictionaries from a delta-encoded log file.
 
     Args:
-        path: Path to the delta-compressed log file to read.
+        path: Path to the delta-encoded log file to read.
         chunk_size: Optional, number of bytes to read per internal loop cycle.
 
     Returns:

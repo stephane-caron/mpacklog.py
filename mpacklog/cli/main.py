@@ -12,6 +12,7 @@ import time
 
 import msgpack
 
+from mpacklog.delta_decode import delta_decode
 from mpacklog.log_server import LogServer
 
 from .csv_printer import CSVPrinter
@@ -85,7 +86,37 @@ def get_argument_parser() -> argparse.ArgumentParser:
         default=4747,
     )
 
+    # mpacklog delta_decode -----------------------------------------------
+    delta_decode_parser = subparsers.add_parser(
+        "delta_decode",
+        help="Decode delta-encoded log file to a regular log file",
+    )
+    delta_decode_parser.add_argument(
+        "input_file",
+        metavar="input_file",
+        help="delta-encoded log file to decode",
+    )
+    delta_decode_parser.add_argument(
+        "output_file",
+        metavar="output_file",
+        help="output file for decoded log",
+    )
+
     return main_parser
+
+
+def decode_delta_log(input_file: str, output_file: str) -> None:
+    """Decode delta-encoded log file to a regular log file.
+
+    Args:
+        input_file: Path to delta-encoded input log file.
+        output_file: Path to output file for decoded log.
+    """
+    with open(output_file, "wb") as out_file:
+        packer = msgpack.Packer()
+        for cumulative_dict in delta_decode(input_file):
+            packed_data = packer.pack(cumulative_dict)
+            out_file.write(packed_data)
 
 
 def dump_log(logfile: str, printer: Printer, follow: bool = False) -> None:
@@ -134,5 +165,7 @@ def main(argv=None) -> None:
         logging.getLogger().setLevel(logging.INFO)
         server = LogServer(args.log_path, args.port)
         server.run()
+    elif args.subcmd == "delta_decode":
+        decode_delta_log(args.input_file, args.output_file)
     else:  # no subcommand
         parser.print_help()

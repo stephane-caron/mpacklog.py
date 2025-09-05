@@ -6,6 +6,7 @@
 """Tests for the main command-line interface."""
 
 import argparse
+import os
 import sys
 import tempfile
 import unittest
@@ -79,6 +80,16 @@ class TestGetArgumentParser(unittest.TestCase):
         args = parser.parse_args(["serve", "/path/to/logs", "--port", "8080"])
         self.assertEqual(args.port, 8080)
 
+    def test_delta_decode_subcommand(self):
+        """Test delta_decode subcommand parsing."""
+        parser = get_argument_parser()
+        args = parser.parse_args(
+            ["delta_decode", "input.mpack", "output.mpack"]
+        )
+        self.assertEqual(args.subcmd, "delta_decode")
+        self.assertEqual(args.input_file, "input.mpack")
+        self.assertEqual(args.output_file, "output.mpack")
+
 
 class TestDumpLog(unittest.TestCase):
     """Test log dumping functionality."""
@@ -98,8 +109,6 @@ class TestDumpLog(unittest.TestCase):
 
     def tearDown(self):
         """Clean up test fixtures."""
-        import os
-
         os.unlink(self.temp_file.name)
 
     def test_dump_log_basic(self):
@@ -136,8 +145,6 @@ class TestMainFunction(unittest.TestCase):
 
     def tearDown(self):
         """Clean up test fixtures."""
-        import os
-
         os.unlink(self.temp_file.name)
 
     def test_main_no_args(self):
