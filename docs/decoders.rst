@@ -1,6 +1,7 @@
-************
-Reading logs
-************
+********
+Decoders
+********
 
-.. automodule:: mpacklog.read_log
-    :members:
+.. autofunction:: mpacklog.decode.decode
+
+.. autofunction:: mpacklog.delta_decode.delta_decode
