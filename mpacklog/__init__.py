@@ -10,9 +10,9 @@
 __version__ = "4.0.1"
 
 from .async_logger import AsyncLogger
+from .decode import decode
 from .delta_decode import delta_decode
 from .log_server import LogServer
-from .decode import decode
 from .sync_logger import SyncLogger
 
 __all__ = [
