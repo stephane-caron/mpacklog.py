@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
 #### Synchronous API
 
-The synchronous API is similar to the asynchronous API, except it doesn't provide a ``stop`` method and the ``put`` and ``write`` methods are blocking.
+The synchronous API is similar to the asynchronous API, except it doesn't provide a `stop` method and the `put` and `write` methods are blocking.
 
 ```python
 import mpacklog
@@ -64,11 +64,11 @@ logger.write()
 
 ## Command-line
 
-The ``mpacklog`` utility provides commands to manipulate ``.mpack`` files.
+The `mpacklog` utility provides commands to manipulate `.mpack` files.
 
-### ``dump``
+### `dump`
 
-The ``dump`` command writes down a log file to [newline-delimited JSON](https://jsonlines.org):
+The `dump` command writes down a log file to [newline-delimited JSON](https://jsonlines.org):
 
 ```console
 mpacklog dump my_log.mpack
@@ -76,9 +76,9 @@ mpacklog dump my_log.mpack
 
 This command is similar to `rq -mJ < my_log.mpack` if you are familiar with [rq](https://github.com/dflemstr/rq).
 
-### ``list``
+### `list`
 
-This commands lists all nested dictionary keys encountered in a log file. Nested keys are separated by slashes ``/`` in the output. For instance, if some dictionaries in ``my_log.mpack`` contain values at ``dict["foo"]["bar"]`` and ``dict["foo"]["cbs"]``, the command will produce:
+This commands lists all nested dictionary keys encountered in a log file. Nested keys are separated by slashes `/` in the output. For instance, if some dictionaries in `my_log.mpack` contain values at `dict["foo"]["bar"]` and `dict["foo"]["cbs"]`, the command will produce:
 
 ```
 $ mpacklog list my_log.mpack
@@ -86,9 +86,9 @@ $ mpacklog list my_log.mpack
 - foo/cbs
 ```
 
-### ``serve``
+### `serve`
 
-The ``serve`` command watches a log file for updates and serves the last dictionary appended to it over the network. Its argument is either a log file or a directory containing log files. In the second case, the most recent log files in the directory is opened:
+The `serve` command watches a log file for updates and serves the last dictionary appended to it over the network. Its argument is either a log file or a directory containing log files. In the second case, the most recent log files in the directory is opened:
 
 ```
 $ mpacklog serve /var/log/my_mpack_logs/
@@ -96,9 +96,9 @@ $ mpacklog serve /var/log/my_mpack_logs/
 
 You can use [`mpackview`](https://pypi.org/project/mpackview) to connect a live plot to the server, or develop your own tool (the server API is quite simple).
 
-### ``delta_decode``
+### `delta_decode`
 
-The ``delta_decode`` command decodes delta-encoded log files back to regular log files:
+The `delta_decode` command decodes delta-encoded log files back to regular log files:
 
 ```console
 mpacklog delta_decode input_delta.mpack output_decoded.mpack
@@ -110,6 +110,6 @@ This command processes files created with delta encoding, where each entry conta
 
 * [foxplot](https://github.com/stephane-caron/foxplot): explore and plot time-series data from MessagePack and line-delimited JSON files.
 * [jq](https://github.com/stedolan/jq): manipulate JSON series to add, remove or extend fields.
-* [moteus-gui](https://pypi.org/project/moteus-gui/): motor driver telemetry GUI from which ``mpackview`` was derived
+* [moteus-gui](https://pypi.org/project/moteus-gui/): motor driver telemetry GUI from which `mpackview` was derived
 * [mpacklog.cpp](https://github.com/stephane-caron/mpacklog.cpp): log dictionaries to MessagePack files in C++.
-* [rq](https://github.com/dflemstr/rq): transform from/to MessagePack, JSON, YAML, TOML, etc. For instance ``mpacklog dump`` is equivalent to ``rq -mJ < my_log.mpack``.
+* [rq](https://github.com/dflemstr/rq): transform from/to MessagePack, JSON, YAML, TOML, etc. For instance `mpacklog dump` is equivalent to `rq -mJ < my_log.mpack`.
