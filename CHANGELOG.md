@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add `delta_decode` command to the command-line interface
 - Add `delta_decode` function for delta decoding
 - Example showing how to interact with a log server
 - LogServer: Add `frequency` parameter to adjust rate limiting
