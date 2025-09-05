@@ -9,12 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add `delta_decode` function for delta decoding
 - Example showing how to interact with a log server
 - LogServer: Add `frequency` parameter to adjust rate limiting
 - LogServer: Add `read_from_beginning` parameter to select initial behavior
 
 ### Changed
 
+- **Breaking:** Rename `read_log` function to `decode`
 - CICD: Add unit tests for the command-line interface
 - CICD: Switch from tox to pixi for dev environment management
 - CICD: Update CI workflow to pixi
