@@ -96,6 +96,16 @@ $ mpacklog serve /var/log/my_mpack_logs/
 
 You can use [`mpackview`](https://pypi.org/project/mpackview) to connect a live plot to the server, or develop your own tool (the server API is quite simple).
 
+### ``delta_decode``
+
+The ``delta_decode`` command decodes delta-encoded log files back to regular log files:
+
+```console
+mpacklog delta_decode input_delta.mpack output_decoded.mpack
+```
+
+This command processes files created with delta encoding, where each entry contains only the changes from the previous state. The output file contains the full cumulative dictionaries at each step.
+
 ## See also
 
 * [foxplot](https://github.com/stephane-caron/foxplot): explore and plot time-series data from MessagePack and line-delimited JSON files.
