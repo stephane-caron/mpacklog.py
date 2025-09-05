@@ -11,8 +11,9 @@ from typing import Generator
 import msgpack
 
 
-def read_log(
-    path: str, chunk_size: int = 100_000
+def decode(
+    path: str,
+    chunk_size: int = 100_000,
 ) -> Generator[dict, None, None]:
     """Read dictionaries in series from a log file.
 
@@ -30,5 +31,4 @@ def read_log(
             if not data:  # end of file
                 break
             unpacker.feed(data)
-            for unpacked in unpacker:
-                yield unpacked
+            yield from unpacker

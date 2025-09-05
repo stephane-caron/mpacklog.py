@@ -10,13 +10,15 @@
 __version__ = "4.0.1"
 
 from .async_logger import AsyncLogger
+from .delta_decode import delta_decode
 from .log_server import LogServer
-from .read_log import read_log
+from .decode import decode
 from .sync_logger import SyncLogger
 
 __all__ = [
     "AsyncLogger",
     "LogServer",
     "SyncLogger",
-    "read_log",
+    "decode",
+    "delta_decode",
 ]
