@@ -1,6 +1,5 @@
 .coverage
-.tox
+.pixi/
 __pycache__
 _build
-coverage
-dist
+dist/
