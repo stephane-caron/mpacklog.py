@@ -2916,9 +2916,9 @@ packages:
 - pypi: ./
   name: mpacklog
   requires_dist:
-  - aiofiles
-  - loop-rate-limiters
-  - msgpack
+  - aiofiles>=0.7.0
+  - loop-rate-limiters>=1.0.0
+  - msgpack>=1.2.3
   requires_python: '>=3.11'
 - pypi: https://files.pythonhosted.org/packages/03/41/ed5517a107628f6f7f3a1f46f19de3aca979bd1fc95861cb56ce0e4bcc02/msgpack-1.2.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
   name: msgpack
