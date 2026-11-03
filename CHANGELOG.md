@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Breaking:** Rename `read_log` function to `decode`
+- Bump minimum msgpack version to 1.2.3
 - CICD: Add unit tests for the command-line interface
 - CICD: Switch from tox to pixi for dev environment management
 - CICD: Update CI workflow to pixi
