@@ -25,7 +25,7 @@ class TestLogServer(unittest.IsolatedAsyncioTestCase):
         await self.logger.flush()
         asyncio.create_task(self.logger.write())
 
-        self.server = LogServer(log_file, 4949)
+        self.server = LogServer(log_file, 4949, read_from_beginning=True)
         asyncio.create_task(self.server.run_async())
         asyncio.create_task(self.log_ten_foos())
 
@@ -46,21 +46,22 @@ class TestLogServer(unittest.IsolatedAsyncioTestCase):
         sock.connect(("localhost", 4949))
         sock.setblocking(False)
 
-        for trial in range(10):
+        reply = None
+        for trial in range(500):
             request = "get".encode("utf-8")
             await loop.sock_sendall(sock, request)
-            reply = None
             data = await loop.sock_recv(sock, 4096)
-            if not data:
-                return None
+            self.assertTrue(data, "connection closed by server")
             unpacker.feed(data)
             for unpacked in unpacker:
                 reply = unpacked
             if reply:
                 break
+            await asyncio.sleep(0.01)
 
         sock.close()
-        self.assertTrue("foo" in reply)
+        self.assertIsNotNone(reply)
+        self.assertIn("foo", reply)
         self.assertIsInstance(reply["foo"], int)
         self.assertGreaterEqual(reply["foo"], 0)
         self.assertLess(reply["foo"], 10)
